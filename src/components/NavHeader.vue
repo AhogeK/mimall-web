@@ -1,57 +1,100 @@
 <template>
   <div class="header">
-		<div class="nav-topbar">
-			<div class="container">
-				<div class="topbar-menu">
-					<a href="javascript:;">小米商城</a>
-					<a href="javascript:;">MUI</a>
-					<a href="javascript:;">云服务</a>
-					<a href="javascript:;">协议规则</a>
-				</div>
-				<div class="topbar-user">
-					<a href="javascript:;">登录</a>
-					<a href="javascript:;">注册</a>
-					<a href="javascript:;" class="my-cart"><span class="icon-cart"></span>购物车</a>
-				</div>
-			</div>
-		</div>
-		<div class="nav-header">
-			<div class="container">
-				<div class="header-logo">
-					<a href="/#/index"></a>
-				</div>
-				<div class="header-menu">
-					<div class="item-menu">
-						<span>小米手机</span>
-						<div class="children"></div>
-					</div>
-					<div class="item-menu">
-						<span>RedMi红米</span>
-						<div class="children"></div>
-					</div>
-					<div class="item-menu">
-						<span>电视</span>
-						<div class="children"></div>
-					</div>		
-				</div>
-				<div class="header-search">
-					<div class="wrapper">
-						<input type="text" name="keyword">
-						<a href="javascript:;"></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="nav-topbar">
+      <div class="container">
+        <div class="topbar-menu">
+          <a href="javascript:;">小米商城</a>
+          <a href="javascript:;">MUI</a>
+          <a href="javascript:;">云服务</a>
+          <a href="javascript:;">协议规则</a>
+        </div>
+        <div class="topbar-user">
+          <a href="javascript:;">登录</a>
+          <a href="javascript:;">注册</a>
+          <a 
+            href="javascript:;" 
+            class="my-cart"
+          >
+            <span class="icon-cart" />
+            购物车
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-header">
+      <div class="container">
+        <div class="header-logo">
+          <a href="/#/index" />
+        </div>
+        <div class="header-menu">
+          <div class="item-menu">
+            <span>小米手机</span>
+            <div class="children">
+              <ul>
+                <li class="product">
+                  <a 
+                    href=""
+                    target="_blank"
+                  >
+                    <div class="pro-img">
+                      <img 
+                        src="../../public/imgs/nav-img/nav-1.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="pro-name">小米CC9</div>
+                    <div class="pro-price">1799元</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a 
+                    href="" 
+                    target="_blank"
+                  >
+                    <div class="pro-img">
+                      <img 
+                        src="../../public/imgs/nav-img/nav-1.png" 
+                        alt=""
+                      >
+                    </div>
+                    <div class="pro-name">小米CC9</div>
+                    <div class="pro-price">1799元</div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="item-menu">
+            <span>RedMi红米</span>
+            <div class="children" />
+          </div>
+          <div class="item-menu">
+            <span>电视</span>
+            <div class="children" />
+          </div>		
+        </div>
+        <div class="header-search">
+          <div class="wrapper">
+            <input
+              type="text"
+              name="keyword"
+            >
+            <a href="javascript:;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
-  name: 'nav-header'
+  name: 'NavHeader'
 }
 </script>
 <style lang="scss">
 	@import './../assets/scss/base.scss';
 	@import './../assets/scss/mixin.scss';
+	@import './../assets/scss/config.scss';
 
 	.header {
 		.nav-topbar {
@@ -81,6 +124,7 @@ export default {
 		.nav-header {
 			.container {
 				@include flex();
+				position: relative;
 				height: 112px;
 				.header-logo {
 					display: inline-block;
@@ -123,7 +167,17 @@ export default {
 							cursor: pointer;
 						}
 						&:hover {
-							
+							color: $colorA;
+							.children {
+								height: 220px;
+							}
+						}
+						.children {
+							position: absolute;
+							top: 112px;
+							left: 0;
+							width: 1226px;
+							border-top: 1px solid #e5e5e5;
 						}
 					}
 				}

@@ -1,11 +1,11 @@
 <template>
-    <div>
-       Order List 
-    </div>
+  <div>
+    Order List 
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'order-list'
+    name: 'OrderList'
 }
 </script>
