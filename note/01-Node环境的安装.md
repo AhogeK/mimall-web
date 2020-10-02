@@ -23,4 +23,4 @@ sudo apt-get install -y nodejs
 
 [npm官方文档](https://docs.npmjs.com/)
 
-**[返回](../README.md)**
+**[返回](https://github.com/AhogeK/mimall-web)**

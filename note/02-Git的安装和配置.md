@@ -40,4 +40,4 @@ VSCODE 可在 **settings.json** 中的 ``git.path``属性添加git地址
 
 [5 个 Git 工作流，改善你的开发流程](https://mp.weixin.qq.com/s?__biz=MzA5MzYyNzQ0MQ==&mid=2247488564&idx=1&sn=6533b99efa702ccd411c644869b2f2d1&chksm=905ba16aa72c287c826dedaf3ac92ff9daa049cb1b457654c74c4451bade2b437c7074f9bc37&mpshare=1&scene=1&srcid=0824019mu4RFevUiAmqYw5Se&sharer_sharetime=1598253422091&sharer_shareid=5bd3a58bf2ace0a77a324717e26394ae&key=fdd054e9602c88a6a817cc150f7422ee16868560540c8ce61acdc226a6dced4363f320368b2c5007bf3b915cd6ffda328ff8d045a9500e4b799e96e5a990368f1f22acc94767b2b951255a8a63b1956405abe6068c6a3b1bda5f146728835297e20854115138af1e930c3c6bf0795e261a4af308072674598223ec4928b796b1&ascene=1&uin=MzA0MjMwNzM%3D&devicetype=Windows+7&version=62090529&lang=zh_CN&exportkey=Aah84P5AcCyXo8rZ9yirbgU%3D&pass_ticket=P25Dj6GiFvx1Su7Gvwt6OZHlm%2FkTS5w0d6efy2iCQR8%3D)
 
-**[返回](../README.md)**
+**[返回](https://github.com/AhogeK/mimall-web)**

@@ -23,4 +23,4 @@
 
 可以直接通过谷歌APP商店进行安装 
 
-**[返回](../README.md)**
+**[返回](https://github.com/AhogeK/mimall-web)**
