@@ -6,7 +6,7 @@ import App from './App.vue'
 // import env from './env'
 
 // 定义mockjs开关 方便开关
-const mock = true;
+const mock = false;
 if (mock) {
   // import 预编译 require() 执行编译
   require('./mock/api')
@@ -22,7 +22,7 @@ axios.defaults.timeout = 8000;
 // 错误接口拦截
 axios.interceptors.response.use(function(response) {
   let res = response.data;
-  if (res.status ==0) {
+  if (res.status == 0) {
     return res.data;
   } else if (res.status == 10) {
     window.location.href = '/#/login';
