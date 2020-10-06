@@ -313,7 +313,8 @@ export default {
 							opacity: 0;
 							overflow: hidden;
 							border-top: 1px solid #e5e5e5;
-							box-shadow: 6px 7px 6px -1px rgba(0, 0, 0, 0.11);
+              box-shadow: 6px 7px 6px -1px rgba(0, 0, 0, 0.11);
+              background-color: $colorG;
 							transition: all .5s;
 							.product {
 								position: relative;
