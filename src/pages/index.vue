@@ -318,6 +318,24 @@ export default {
             name: '移动4G专区'
           }
         ]
+      ],
+      adsList: [
+        {
+          id: 33,
+          img: '/imgs/ads/ads-1.png'
+        },
+        {
+          id: 48,
+          img: '/imgs/ads/ads-2.jpg'
+        },
+        {
+          id: 45,
+          img: '/imgs/ads/ads-3.png'
+        },
+        {
+          id: 47,
+          img: '/imgs/ads/ads-4.jpg'
+        }
       ]
     }
   }
