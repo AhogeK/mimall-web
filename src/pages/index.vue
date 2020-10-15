@@ -113,18 +113,18 @@
                 :key="j"
                 class="item"
               >
-                <span>新品</span>
+                <span :class="{'new-pro' : j % 2 == 0}">新品</span>
                 <div class="item-img">
                   <img
-                    src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6f2493e6c6fe8e2485c407e5d75e3651.jpg"
-                    alt=""
+                    :src="item.mainImage"
+                    alt="item.name"
                   >
                 </div>
                 <div class="item-info">
-                  <h3>小米9</h3>
-                  <p>骁龙855，索尼4800万超广角微距</p>
+                  <h3>{{ item.name }}</h3>
+                  <p>{{ item.subtitle }}</p>
                   <p class="price">
-                    2999元
+                    {{ item.price }}元
                   </p>
                 </div>
               </div>
@@ -336,7 +336,23 @@ export default {
           id: 47,
           img: '/imgs/ads/ads-4.jpg'
         }
-      ]
+      ],
+      phoneList: []
+    }
+  },
+  mounted () {
+    this.init();
+  },
+  methods: {
+    init () {
+      this.axios.get('/products', {
+        params: {
+          categoryId: 100012,
+          pageSize: 8
+        }
+      }).then((res) => {
+        this.phoneList = [res.list.slice(0,4), res.list.slice(4, 8)]
+      })
     }
   }
 }
@@ -443,7 +459,7 @@ export default {
         font-size: $fontF;
         height: 21px;
         line-height: 21px;
-        color:$colorB;
+        color: $colorB;
         margin-bottom: $fontG;
       }
       .wrapper{
@@ -469,11 +485,24 @@ export default {
               background-color: $colorG;
               text-align: center;
               span{
-
+                display: inline-block;
+                width: 67px;
+                height: $fontE;
+                font-size: $fontJ;
+                line-height: 24px;
+                color: $colorG;
+                &.new-pro {
+                  background-color: #7ECF68;
+                }
+                &.kill-pro {
+                  background-color: #E82626;
+                }
               }
               .item-img{
                 img{
+                  width: 100%;
                   height: 195px;
+                  object-fit: cover;
                 }
               }
               .item-info{
