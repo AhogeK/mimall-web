@@ -134,228 +134,242 @@
       </div>
     </div>
     <ServiceBar />
+    <Modal
+      title="提示"
+      sure-text="查看购物车"
+      btn-type="1"
+      modal-type="middle"
+      :show-modal="showModal"
+    >
+      <template v-slot:body>
+        <p>商品添加成功！</p>
+      </template>
+    </Modal>
   </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import ServiceBar from './../components/ServiceBar'
-import 'swiper/css/swiper.css'
-export default {
-  name: 'Index',
-  components: {
-    Swiper,
-    SwiperSlide,
-    ServiceBar
-  },
-  data() {
-    return {
-      swiperOptions: {
-        autoplay: true,
-        loop: true,
-        effect: 'cube',
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
+  import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+  import ServiceBar from './../components/ServiceBar'
+  import Modal from './../components/Modal'
+  import 'swiper/css/swiper.css'
+  export default {
+    name: 'Index',
+    components: {
+      Swiper,
+      SwiperSlide,
+      ServiceBar,
+      Modal
+    },
+    data() {
+      return {
+        swiperOptions: {
+          autoplay: true,
+          loop: true,
+          effect: 'cube',
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          }
         },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        }
-      },
-      slideList: [
-        {
-          id: '42',
-          img: '/imgs/slider/slide-1.jpg'
-        },
-        {
-          id: '45',
-          img: '/imgs/slider/slide-2.jpg'
-        },
-        {
-          id: '46',
-          img: '/imgs/slider/slide-3.jpg'
-        },
-        {
-          id: '',
-          img: '/imgs/slider/slide-4.jpg'
-        },
-        {
-          id: '',
-          img: '/imgs/slider/slide-5.jpg'
-        }
-      ],
-      menuList: [
-        [
+        slideList: [
           {
-            id: 30,
-            img: '/imgs/item-box-1.png',
-            name: '小米CC9'
+            id: '42',
+            img: '/imgs/slider/slide-1.jpg'
           },
           {
-            id: 31,
-            img: '/imgs/item-box-2.png',
-            name: '小米8青春版'
+            id: '45',
+            img: '/imgs/slider/slide-2.jpg'
           },
           {
-            id: 32,
-            img: 'imgs/item-box-3.jpg',
-            name: 'Redmi K20 Pro'
+            id: '46',
+            img: '/imgs/slider/slide-3.jpg'
           },
           {
-            id: 33,
-            img: 'imgs/item-box-4.jpg',
-            name: '移动4G专区'
+            id: '',
+            img: '/imgs/slider/slide-4.jpg'
+          },
+          {
+            id: '',
+            img: '/imgs/slider/slide-5.jpg'
           }
         ],
-        [
-          {
-            id: 30,
-            img: '/imgs/item-box-1.png',
-            name: '小米CC9'
-          },
-          {
-            id: 31,
-            img: '/imgs/item-box-2.png',
-            name: '小米8青春版'
-          },
-          {
-            id: 32,
-            img: 'imgs/item-box-3.jpg',
-            name: 'Redmi K20 Pro'
-          },
+        menuList: [
+          [
+            {
+              id: 30,
+              img: '/imgs/item-box-1.png',
+              name: '小米CC9'
+            },
+            {
+              id: 31,
+              img: '/imgs/item-box-2.png',
+              name: '小米8青春版'
+            },
+            {
+              id: 32,
+              img: 'imgs/item-box-3.jpg',
+              name: 'Redmi K20 Pro'
+            },
+            {
+              id: 33,
+              img: 'imgs/item-box-4.jpg',
+              name: '移动4G专区'
+            }
+          ],
+          [
+            {
+              id: 30,
+              img: '/imgs/item-box-1.png',
+              name: '小米CC9'
+            },
+            {
+              id: 31,
+              img: '/imgs/item-box-2.png',
+              name: '小米8青春版'
+            },
+            {
+              id: 32,
+              img: 'imgs/item-box-3.jpg',
+              name: 'Redmi K20 Pro'
+            },
+            {
+              id: 33,
+              img: 'imgs/item-box-4.jpg',
+              name: '移动4G专区'
+            }
+          ],
+          [
+            {
+              id: 30,
+              img: '/imgs/item-box-1.png',
+              name: '小米CC9'
+            },
+            {
+              id: 31,
+              img: '/imgs/item-box-2.png',
+              name: '小米8青春版'
+            },
+            {
+              id: 32,
+              img: 'imgs/item-box-3.jpg',
+              name: 'Redmi K20 Pro'
+            },
+            {
+              id: 33,
+              img: 'imgs/item-box-4.jpg',
+              name: '移动4G专区'
+            }
+          ],
+          [
+            {
+              id: 30,
+              img: '/imgs/item-box-1.png',
+              name: '小米CC9'
+            },
+            {
+              id: 31,
+              img: '/imgs/item-box-2.png',
+              name: '小米8青春版'
+            },
+            {
+              id: 32,
+              img: 'imgs/item-box-3.jpg',
+              name: 'Redmi K20 Pro'
+            },
+            {
+              id: 33,
+              img: 'imgs/item-box-4.jpg',
+              name: '移动4G专区'
+            }
+          ],
+          [
+            {
+              id: 30,
+              img: '/imgs/item-box-1.png',
+              name: '小米CC9'
+            },
+            {
+              id: 31,
+              img: '/imgs/item-box-2.png',
+              name: '小米8青春版'
+            },
+            {
+              id: 32,
+              img: 'imgs/item-box-3.jpg',
+              name: 'Redmi K20 Pro'
+            },
+            {
+              id: 33,
+              img: 'imgs/item-box-4.jpg',
+              name: '移动4G专区'
+            }
+          ],
+          [
+            {
+              id: 30,
+              img: '/imgs/item-box-1.png',
+              name: '小米CC9'
+            },
+            {
+              id: 31,
+              img: '/imgs/item-box-2.png',
+              name: '小米8青春版'
+            },
+            {
+              id: 32,
+              img: 'imgs/item-box-3.jpg',
+              name: 'Redmi K20 Pro'
+            },
+            {
+              id: 33,
+              img: 'imgs/item-box-4.jpg',
+              name: '移动4G专区'
+            }
+          ]
+        ],
+        adsList: [
           {
             id: 33,
-            img: 'imgs/item-box-4.jpg',
-            name: '移动4G专区'
+            img: '/imgs/ads/ads-1.png'
+          },
+          {
+            id: 48,
+            img: '/imgs/ads/ads-2.jpg'
+          },
+          {
+            id: 45,
+            img: '/imgs/ads/ads-3.png'
+          },
+          {
+            id: 47,
+            img: '/imgs/ads/ads-4.jpg'
           }
         ],
-        [
-          {
-            id: 30,
-            img: '/imgs/item-box-1.png',
-            name: '小米CC9'
-          },
-          {
-            id: 31,
-            img: '/imgs/item-box-2.png',
-            name: '小米8青春版'
-          },
-          {
-            id: 32,
-            img: 'imgs/item-box-3.jpg',
-            name: 'Redmi K20 Pro'
-          },
-          {
-            id: 33,
-            img: 'imgs/item-box-4.jpg',
-            name: '移动4G专区'
+        phoneList: [],
+        showModal: true
+      }
+    },
+    mounted () {
+      this.init();
+    },
+    methods: {
+      init () {
+        this.axios.get('/products', {
+          params: {
+            categoryId: 100012,
+            pageSize: 8
           }
-        ],
-        [
-          {
-            id: 30,
-            img: '/imgs/item-box-1.png',
-            name: '小米CC9'
-          },
-          {
-            id: 31,
-            img: '/imgs/item-box-2.png',
-            name: '小米8青春版'
-          },
-          {
-            id: 32,
-            img: 'imgs/item-box-3.jpg',
-            name: 'Redmi K20 Pro'
-          },
-          {
-            id: 33,
-            img: 'imgs/item-box-4.jpg',
-            name: '移动4G专区'
-          }
-        ],
-        [
-          {
-            id: 30,
-            img: '/imgs/item-box-1.png',
-            name: '小米CC9'
-          },
-          {
-            id: 31,
-            img: '/imgs/item-box-2.png',
-            name: '小米8青春版'
-          },
-          {
-            id: 32,
-            img: 'imgs/item-box-3.jpg',
-            name: 'Redmi K20 Pro'
-          },
-          {
-            id: 33,
-            img: 'imgs/item-box-4.jpg',
-            name: '移动4G专区'
-          }
-        ],
-        [
-          {
-            id: 30,
-            img: '/imgs/item-box-1.png',
-            name: '小米CC9'
-          },
-          {
-            id: 31,
-            img: '/imgs/item-box-2.png',
-            name: '小米8青春版'
-          },
-          {
-            id: 32,
-            img: 'imgs/item-box-3.jpg',
-            name: 'Redmi K20 Pro'
-          },
-          {
-            id: 33,
-            img: 'imgs/item-box-4.jpg',
-            name: '移动4G专区'
-          }
-        ]
-      ],
-      adsList: [
-        {
-          id: 33,
-          img: '/imgs/ads/ads-1.png'
-        },
-        {
-          id: 48,
-          img: '/imgs/ads/ads-2.jpg'
-        },
-        {
-          id: 45,
-          img: '/imgs/ads/ads-3.png'
-        },
-        {
-          id: 47,
-          img: '/imgs/ads/ads-4.jpg'
-        }
-      ],
-      phoneList: []
-    }
-  },
-  mounted () {
-    this.init();
-  },
-  methods: {
-    init () {
-      this.axios.get('/products', {
-        params: {
-          categoryId: 100012,
-          pageSize: 8
-        }
-      }).then((res) => {
-        this.phoneList = [res.list.slice(0,4), res.list.slice(4, 8)]
-      })
+        }).then((res) => {
+          this.phoneList = [res.list.slice(0,4), res.list.slice(4, 8)]
+        })
+      }
     }
   }
-}
 </script>
 <style lang="scss" scope>
   @import './../assets/scss/config.scss';
