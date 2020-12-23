@@ -123,7 +123,10 @@
                 <div class="item-info">
                   <h3>{{ item.name }}</h3>
                   <p>{{ item.subtitle }}</p>
-                  <p class="price">
+                  <p
+                    class="price"
+                    @click="addCart(item.id)"
+                  >
                     {{ item.price }}元
                   </p>
                 </div>
@@ -140,6 +143,8 @@
       btn-type="1"
       modal-type="middle"
       :show-modal="showModal"
+      @submit="goToCart"
+      @cancel="showModal=false"
     >
       <template v-slot:body>
         <p>商品添加成功！</p>
@@ -153,6 +158,7 @@
   import ServiceBar from './../components/ServiceBar'
   import Modal from './../components/Modal'
   import 'swiper/css/swiper.css'
+
   export default {
     name: 'Index',
     components: {
@@ -351,14 +357,14 @@
           }
         ],
         phoneList: [],
-        showModal: true
+        showModal: false
       }
     },
-    mounted () {
+    mounted() {
       this.init();
     },
     methods: {
-      init () {
+      init() {
         this.axios.get('/products', {
           params: {
             categoryId: 100012,
@@ -367,6 +373,22 @@
         }).then((res) => {
           this.phoneList = [res.list.slice(0,4), res.list.slice(4, 8)]
         })
+      },
+      addCart(productId) {
+        this.showModal = true
+        return
+        // TODO: 暂未写登入，会自动跳转无法请求
+        this.axios.post('/carts', {
+          productId: productId,
+          selectes: true
+        }).then((res) => {
+
+        }).catch((res) => {
+          this.showModal = true
+        })
+      },
+      goToCart() {
+        this.$router.push('/cart')
       }
     }
   }

@@ -1,36 +1,56 @@
 <template>
-  <div
-    v-show="showModal"
-    class="modal"
-  >
-    <div class="mask" />
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <span>{{ title }}</span>
-        <a
-          href="javascript:;"
-          class="icon-close"
-        />
-      </div>
-      <div class="modal-body">
-        <slot name="body" />
-      </div>
-      <div class="modal-footer">
-        <div class="btn-group">
+  <transition name="slide">
+    <div
+      v-show="showModal"
+      class="modal"
+    >
+      <div class="mask" />
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <span>{{ title }}</span>
           <a
-            v-show="btnType==1||btnType==3"
             href="javascript:;"
-            class="btn"
-          >确定</a>
-          <a
-            v-show="btnType==2||btnType==3"
-            href="javascript:;"
-            class="btn btn-default"
-          >取消</a>
+            class="icon-close"
+            @click="$emit('cancel')"
+          />
+        </div>
+        <div class="modal-body">
+          <slot name="body" />
+        </div>
+        <div class="modal-footer">
+          <div class="btn-group">
+            <a
+              v-if="btnType=='1'"
+              href="javascript:;"
+              class="btn"
+              @click="$emit('submit')"
+            >确定</a>
+            <a
+              v-if="btnType=='2'"
+              href="javascript:;"
+              class="btn"
+              @click="$emit('cancel')"
+            >取消</a>
+            <div 
+              v-if="btnType=='3'"
+              class="btn-group"
+            >
+              <a
+                href="javascript:;"
+                class="btn"
+                @click="$emit('submit')"
+              >确定</a>
+              <a
+                href="javascript:;"
+                class="btn btn-default"
+                @click="$emit('cancel')"
+              >取消</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 <script>
   export default {
