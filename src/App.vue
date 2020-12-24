@@ -13,7 +13,21 @@ export default {
     }
   },
   mounted() {
-    
+    this.getUser();
+    this.getCartCount();
+  },
+  methods: {
+    getUser() {
+      this.axios.get('/user').then(() => {
+        // TODO: 保存到Vuex中
+
+      })
+    },
+    getCartCount() {
+      this.axios.get('/carts/products/sum').then(() => {
+
+      })
+    }
   }
 }
 </script>
