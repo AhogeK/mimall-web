@@ -55,7 +55,7 @@
                   >
                     <div class="pro-img">
                       <img 
-                        :src="item.mainImage"
+                        v-lazy="item.mainImage"
                         :alt="item.subtitle"
                       >
                     </div>
@@ -81,7 +81,7 @@
                   >
                     <div class="pro-img">
                       <img 
-                        src="/imgs/nav-img/nav-3-1.jpg"
+                        v-lazy="'/imgs/nav-img/nav-3-1.jpg'"
                         alt=""
                       >
                     </div>
@@ -96,7 +96,7 @@
                   >
                     <div class="pro-img">
                       <img 
-                        src="/imgs/nav-img/nav-3-2.jpg" 
+                        v-lazy="'/imgs/nav-img/nav-3-2.jpg'" 
                         alt=""
                       >
                     </div>
@@ -111,7 +111,7 @@
                   >
                     <div class="pro-img">
                       <img 
-                        src="/imgs/nav-img/nav-3-3.png"
+                        v-lazy="'/imgs/nav-img/nav-3-3.png'"
                         alt=""
                       >
                     </div>
@@ -126,7 +126,7 @@
                   >
                     <div class="pro-img">
                       <img 
-                        src="/imgs/nav-img/nav-3-4.jpg" 
+                        v-lazy="'/imgs/nav-img/nav-3-4.jpg'"
                         alt=""
                       >
                     </div>
@@ -141,7 +141,7 @@
                   >
                     <div class="pro-img">
                       <img 
-                        src="/imgs/nav-img/nav-3-5.jpg"
+                        v-lazy="'/imgs/nav-img/nav-3-5.jpg'"
                         alt=""
                       >
                     </div>
@@ -156,7 +156,7 @@
                   >
                     <div class="pro-img">
                       <img 
-                        src="/imgs/nav-img/nav-3-6.png" 
+                        v-lazy="'/imgs/nav-img/nav-3-6.png'"
                         alt=""
                       >
                     </div>

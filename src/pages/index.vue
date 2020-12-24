@@ -78,7 +78,7 @@
           :href="'/#/product/'+item.id"
         >
           <img
-            :src="item.img"
+            v-lazy="item.img"
             alt=""
           >
         </a>
@@ -86,7 +86,7 @@
       <div class="banner">
         <a href="/#/product/30">
           <img
-            src="/imgs/banner-1.png"
+            v-lazy="'/imgs/banner-1.png'"
             alt=""
           >
         </a>
@@ -98,7 +98,7 @@
         <div class="wrapper">
           <div class="banner-left">
             <a href="/#/product/35"><img
-              src="/imgs/mix-alpha.jpg"
+              v-lazy="'/imgs/mix-alpha.jpg'"
               alt=""
             ></a>
           </div>
@@ -116,7 +116,7 @@
                 <span :class="{'new-pro' : j % 2 == 0}">新品</span>
                 <div class="item-img">
                   <img
-                    :src="item.mainImage"
+                    v-lazy="item.mainImage"
                     alt="item.name"
                   >
                 </div>
