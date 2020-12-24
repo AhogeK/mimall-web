@@ -24,13 +24,13 @@
               href="javascript:;"
               class="btn"
               @click="$emit('submit')"
-            >确定</a>
+            >{{ sureText }}</a>
             <a
               v-if="btnType=='2'"
               href="javascript:;"
               class="btn"
               @click="$emit('cancel')"
-            >取消</a>
+            >{{ cancelText }}</a>
             <div 
               v-if="btnType=='3'"
               class="btn-group"
@@ -39,12 +39,12 @@
                 href="javascript:;"
                 class="btn"
                 @click="$emit('submit')"
-              >确定</a>
+              >{{ sureText }}</a>
               <a
                 href="javascript:;"
                 class="btn btn-default"
                 @click="$emit('cancel')"
-              >取消</a>
+              >{{ cancelText }}</a>
             </div>
           </div>
         </div>
