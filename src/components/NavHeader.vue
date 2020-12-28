@@ -29,7 +29,7 @@
             @click="goToCart"
           >
             <span class="icon-cart" />
-            购物车
+            购物车({{ cartCount }})
           </a>
         </div>
       </div>
@@ -182,6 +182,8 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'NavHeader',
   filters: {
@@ -192,9 +194,17 @@ export default {
   },
   data() {
     return {
-      username: '',
       phoneList: []
     }
+  },
+  computed: {
+    // username() {
+    //   return this.$store.state.username
+    // },
+    // cartCount() {
+    //   return this.$store.state.cartCount
+    // }
+    ...mapState(['username', 'cartCount'])
   },
   mounted () {
     this.getProductList();
