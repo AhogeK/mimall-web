@@ -3,8 +3,9 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueCookie from 'vue-cookie'
-import App from './App.vue'
 import VueLazyLoad from 'vue-lazyload'
+import store from './store'
+import App from './App.vue'
 // import env from './env'
 
 // 定义mockjs开关 方便开关
@@ -45,6 +46,7 @@ Vue.use(VueLazyLoad, {
 Vue.config.productionTip = false
 
 new Vue({
+  store,
   router,
   render: h => h(App)
 }).$mount('#app')
