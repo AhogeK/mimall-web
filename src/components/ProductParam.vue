@@ -47,11 +47,12 @@ export default {
     line-height: 70px;
     border-top: 1px solid $colorH;
     background-color: $colorG;
+    z-index: 5;
     &.is_fixed {
       position: fixed;
       top: 0;
       width: 100%;
-      box-shadow: 0 5px 7px $colorE;
+      box-shadow: 0 5px 5px $colorE;
     }
     .container {
       @include flex();
