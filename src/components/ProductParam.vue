@@ -5,7 +5,7 @@
   >
     <div class="container">
       <div class="pro-title">
-        小米8
+        {{ title }}
       </div>
       <div class="pro-param">
         <a href="javascript:;">概述</a><span>|</span>
@@ -19,6 +19,12 @@
 <script>
 export default {
   name: 'ProductParam',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
       isFixed: false

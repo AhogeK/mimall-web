@@ -3,7 +3,7 @@
     <div class="nav-topbar">
       <div class="container">
         <div class="topbar-menu">
-          <a href="javascript:;">小米商城</a>
+          <a href="/">小米商城</a>
           <a href="javascript:;">MUI</a>
           <a href="javascript:;">云服务</a>
           <a href="javascript:;">协议规则</a>
