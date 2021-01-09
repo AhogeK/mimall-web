@@ -118,9 +118,9 @@ export default {
     ...mapActions(['saveUserName']),
     register() {
       this.axios.post('/user/register', {
-        username: 'admin1',
-        password: 'admin1',
-        email: 'admin1@163.com'
+        username: 'AhogeK',
+        password: '123456',
+        email: 'ahogek@163.com'
       }).then(() => {
         alert('注册成功')
       })

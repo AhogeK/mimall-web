@@ -375,16 +375,14 @@
         })
       },
       addCart(productId) {
-        this.showModal = true
-        return
-        // TODO: 暂未写登入，会自动跳转无法请求
         this.axios.post('/carts', {
           productId: productId,
-          selectes: true
+          selected: true
         }).then((res) => {
-
+          this.showModal = true;
+          this.$store.dispatch('saveCartCount', res.cartTotalQuantity)
         }).catch((res) => {
-          this.showModal = true
+          this.showModal = false
         })
       },
       goToCart() {
