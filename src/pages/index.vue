@@ -373,6 +373,9 @@
         }).then((res) => {
           this.phoneList = [res.list.slice(0,4), res.list.slice(4, 8)]
         })
+        this.axios.get('/carts/products/sum').then((res = 0) => {
+        this.$store.dispatch('saveCartCount', res)
+      })
       },
       addCart(productId) {
         this.axios.post('/carts', {
