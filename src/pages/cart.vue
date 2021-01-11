@@ -88,6 +88,7 @@
             <a
               href="javascript:;"
               class="btn"
+              @click="order"
             >去结算</a>
           </div>
         </div>
@@ -101,7 +102,7 @@
   import OrderHeader from './../components/OrderHeader'
   import ServiceBar from './../components/ServiceBar'
   import NavFooter from './../components/NavFooter'
-  
+
   export default{
     name:'Index',
     components:{
@@ -172,6 +173,15 @@
         this.allChecked = res.selectedAll;
         this.cartTotalPrice = res.cartTotalPrice;
         this.checkedNum = this.list.filter(item=>item.productSelected).length;
+      },
+      // 购物车下单
+      order() {
+        let isCheck = this.list.every(item => !item.productSelected)
+        if (isCheck) {
+          alert('请选择一件商品')
+        } else {
+          this.$router.push('/order/confirm')
+        }
       }
     }
   }
