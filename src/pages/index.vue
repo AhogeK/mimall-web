@@ -384,7 +384,7 @@
         }).then((res) => {
           this.showModal = true;
           this.$store.dispatch('saveCartCount', res.cartTotalQuantity)
-        }).catch((res) => {
+        }).catch(() => {
           this.showModal = false
         })
       },

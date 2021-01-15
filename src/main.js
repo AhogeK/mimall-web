@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import Vue from 'vue'
 import router from './router'
 import axios from 'axios'
@@ -36,7 +37,7 @@ axios.interceptors.response.use(function (response) {
     }
     return Promise.reject(res)
   } else {
-    Message.warning(res.msg);
+    Message.warning(res.msg)
     return Promise.reject(res)
   }
 });

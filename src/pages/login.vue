@@ -108,11 +108,18 @@ export default {
         username,
         password
       }).then((res) => {
-        this.$cookie.set('useerId', res.id, {expires: '1M'});
+        // this.$cookie.set('useerId', res.id, {expires: '1M'});
+        this.$cookie.set("userId", res.id, {expires: 'Session'})
         // 利用Vuex保存用户名
         // this.$store.dispatch('saveUserName', res.username)
         this.saveUserName(res.username)
-        this.$router.push('/index')
+        // this.$router.push('/index')
+        this.$router.push({
+          name: 'index',
+          params: {
+            form: 'login'
+          }
+        })
       })
     },
     ...mapActions(['saveUserName']),
