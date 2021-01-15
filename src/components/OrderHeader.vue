@@ -5,7 +5,10 @@
         <a href="/#/index" />
       </div>
       <div class="title">
-        <h2>{{ title }}<slot name="tip" /></h2>
+        <h2>
+          {{ title }}
+          <slot name="tip" />
+        </h2>
       </div>
       <div class="username">
         <a href="javascript:;">{{ username }}</a>
@@ -14,9 +17,9 @@
   </div>
 </template>
 <script>
-import {mapState} from 'vuex'
+  import {mapState} from 'vuex'
 
-export default {
+  export default{
     name: 'OrderHeader',
     props: {
       title: {
@@ -27,36 +30,39 @@ export default {
     computed: {
       ...mapState(['username'])
     }
-}
+  }
 </script>
 <style lang="scss">
   .order-header {
     padding:30px 0;
-    .header-logo {
-      float: left;
+    border-bottom:2px solid #FF6600;
+    .header-logo{
+      float:left;
     }
-    .title, .username {
-      display: inline-block;
-      height: 55px;
-      line-height: 55px;
+    .title,.username {
+      display:inline-block;
+      height:55px;
+      line-height:55px;
     }
     .title {
-      font-size: 28px;
-      float: left;
-      color: #333333;
-      margin-left: 54px;
+      float:left;
+      margin-left:54px;
+      h2 {
+        font-size:28px;
+        color:#333333;
+      }
       span {
-        font-size: 14px;
-        margin-left: 54px;
-        color: #999999;
-        font-weight: bold;
+        font-size:14px;
+        margin-left:17px;
+        color:#999999;
+        font-weight:200;
       }
     }
     .username {
-      float: right;
-      a {
-        color: #666666;
-        font-size: 16px;
+      float:right;
+      a{
+        color:#666666;
+        font-size:16px;
       }
     }
   }
