@@ -63,6 +63,8 @@
                 v-for="(item,index) in list"
                 :key="index"
                 class="addr-info"
+                :class="{'checked': index == checkIndex}"
+                @click="checkIndex=index"
               >
                 <h2>{{ item.receiverName }}</h2>
                 <div class="phone">
@@ -84,6 +86,7 @@
                   <a
                     href="javascript:;"
                     class="fr"
+                    @click="editAddressModal(item)"
                   >
                     <svg class="icon icon-edit">
                       <use xlink:href="#icon-edit" />
@@ -162,6 +165,7 @@
             <a
               href="javascript:;"
               class="btn btn-large"
+              @click="orderSubmit"
             >去结算</a>
           </div>
         </div>
@@ -289,7 +293,8 @@ export default{
       checkedItem: {},//选中的商品对象
       userAction: '',//用户行为 0：新增 1：编辑 2：删除
       showDelModal: false,//是否显示删除弹框
-      showEditModal: false
+      showEditModal: false,
+      checkIndex: 0
     }
   },
   mounted() {
@@ -305,6 +310,11 @@ export default{
     openAddressModal() {
       this.userAction = 0
       this.checkedItem = {}
+      this.showEditModal = true
+    },
+    editAddressModal(item) {
+      this.userAction = 1
+      this.checkedItem = item
       this.showEditModal = true
     },
     delAddress(item) {
@@ -372,6 +382,23 @@ export default{
         this.cartList = list.filter(item=>item.productSelected)
         this.cartList.map((item) => {
           this.count += item.quantity
+        })
+      })
+    },
+    orderSubmit() {
+      let item = this.list[this.checkIndex]
+      if (!item) {
+        this.$message.error('请选择一个收获地址')
+        return
+      }
+      this.axios.post('/orders', {
+        shippingId: item.id
+      }).then((res) => {
+        this.$router.push({
+          path: '/order/pay',
+          query: {
+            orderNo: res.orderNo
+          }
         })
       })
     }
