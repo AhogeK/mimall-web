@@ -165,6 +165,84 @@
       </div>
     </div>
     <Modal
+      title="新增确认"
+      btn-type="1"
+      :show-modal="showEditModal"
+      @cancel="showEditModal=false"
+      @submit="submitAddress"
+    >
+      <template v-slot:body>
+        <div class="edit-wrap">
+          <div class="item">
+            <input
+              type="text"
+              class="input"
+              placeholder="姓名"
+            >
+            <input
+              type="text"
+              class="input"
+              placeholder="手机号"
+            >
+          </div>
+          <div class="item">
+            <select name="province">
+              <option value="北京">
+                北京
+              </option>
+              <option value="天津">
+                天津
+              </option>
+              <option value="河北">
+                河北
+              </option>
+            </select>
+            <select name="city">
+              <option value="北京">
+                北京
+              </option>
+              <option value="天津">
+                天津
+              </option>
+              <option value="河北">
+                石家庄
+              </option>
+            </select>
+            <select name="district">
+              <option value="北京">
+                昌平区
+              </option>
+              <option value="天津">
+                海淀区
+              </option>
+              <option value="河北">
+                东城区
+              </option>
+              <option value="天津">
+                西城区
+              </option>
+              <option value="河北">
+                顺义区
+              </option>
+              <option value="天津">
+                房山区
+              </option>
+            </select>
+          </div>
+          <div class="item">
+            <textarea name="street" />
+          </div>
+          <div class="item">
+            <input
+              type="text"
+              class="input"
+              placeholder="邮编"
+            >
+          </div>
+        </div>
+      </template>
+    </Modal>
+    <Modal
       title="删除确认"
       btn-type="1"
       :show-modal="showDelModal"
@@ -186,13 +264,14 @@ export default{
   },
   data() {
     return {
-      list:[],//收货地址列表
-      cartList:[],//购物车中需要结算的商品列表
-      cartTotalPrice:0,//商品总金额
-      count:0,//商品结算数量
-      checkedItem:{},//选中的商品对象
-      userAction:'',//用户行为 0：新增 1：编辑 2：删除
-      showDelModal:false//是否显示删除弹框
+      list: [],//收货地址列表
+      cartList: [],//购物车中需要结算的商品列表
+      cartTotalPrice: 0,//商品总金额
+      count: 0,//商品结算数量
+      checkedItem: {},//选中的商品对象
+      userAction: '',//用户行为 0：新增 1：编辑 2：删除
+      showDelModal: false,//是否显示删除弹框
+      showEditModal: true
     }
   },
   mounted() {
@@ -398,5 +477,36 @@ export default{
         }
       }
     }
+    .edit-wrap {
+      font-size: 14px;
+      .item {
+        margin-bottom: 15px;
+        .input {
+          display: inline-block;
+          width: 283px;
+          height: 40px;
+          line-height: 40px;
+          padding-left: 15px;
+          border: 1px solid #E5E5E5;
+          & + .input {
+            margin-left: 14px
+          }
+        }
+        select {
+          height: 40px;
+          line-height: 40px;
+          border: 1px solid #E5E5E5;
+          margin-right: 15PX; 
+        }
+        textarea {
+          height: 62px;
+          width: 100%;
+          padding: 13px 15px;
+          box-sizing: border-box;
+          border: 1px solid #E5E5E5; 
+        }
+      }
+    }
   }
+  
 </style>
