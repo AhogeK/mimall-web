@@ -11,7 +11,7 @@
               <p>收获信息：{{ addressInfo }}</p>
             </div>
             <div class="order-total">
-              <p>应付总额：<span>10</span>元</p>
+              <p>应付总额：<span>{{ payment }}</span>元</p>
               <p>
                 订单详细<em
                   class="icon-down"
@@ -89,16 +89,31 @@
       :img="payImg"
       @close="closePayModal"
     />
+    <Modal
+      title="支付确认"
+      btn-type="3"
+      :show-modal="showPayModal"
+      sure-text="查看订单"
+      cancel-text="未支付"
+      @cancel="showPayModal=false"
+      @submit="goOrderList"
+    >
+      <template v-slot:body>
+        <p>您确认是否完成支付</p>
+      </template>
+    </Modal>
   </div>
 </template>
 <script>
 import QRCode from 'qrcode'
 import ScanPayCode from './../components/ScanPayCode'
+import Modal from './../components/Modal'
 
 export default {
   name: 'OrderPay',
   components: {
-    ScanPayCode
+    ScanPayCode,
+    Modal
   },
   data() {
     return {
@@ -108,7 +123,10 @@ export default {
       showDetail: false,
       payType: '',
       showPay: false,
-      payImg: ''
+      payImg: '',
+      showPayModal: false,
+      payment: 0,
+      T: ''
     }
   },
   mounted() {
@@ -120,6 +138,7 @@ export default {
         let item = res.shippingVo
         this.addressInfo = `${item.receiverName} ${item.receiverMobile} ${item.receiverProvince} ${item.receiverCity} ${item.receiverDistrict} ${item.receiverAddress}`
         this.orderDetail = res.orderItemVoList
+        this.payment = res.payment
       })
     },
     paySubmit(payType) {
@@ -138,6 +157,7 @@ export default {
             console.log(url)
             this.showPay = true
             this.payImg = url
+            this.loopOrderState()
           })
           .catch(() => {
             this.$message.error('微信二维码生成失效，请稍后重试')
@@ -147,6 +167,21 @@ export default {
     },
     closePayModal() {
       this.showPay = false
+      this.showPayModal = true
+      clearInterval(this.T)
+    },
+    loopOrderState() {
+      this.T = setInterval(() => {
+        this.axios.get(`/orders/${this.orderId}`).then((res) => {
+          if (res.status == 20) {
+            clearInterval(this.T)
+            this.goOrderList()
+          }
+        })
+      }, 1000)
+    },
+    goOrderList() {
+      this.$router.push('/order/list')
     }
   }
 }
