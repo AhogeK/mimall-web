@@ -68,7 +68,7 @@
             </div>
           </div>
           <el-pagination
-            v-if="!loading && list.length > 0"
+            v-if="false"
             class="pagination"
             background
             layout="prev, pager, next"
@@ -76,6 +76,18 @@
             :total="total" 
             @current-change="handleChange"
           />
+          <div
+            v-if="!loading && list.length > 0"
+            class="load-more"
+          >
+            <el-button
+              type="primary"
+              :loading="loading"
+              @click="loadMore"
+            >
+              加载更多
+            </el-button>
+          </div>
           <NoData v-if="!loading && list.length==0" />
         </div>
       </div>
@@ -86,7 +98,7 @@
 import OrderHeader from './../components/OrderHeader'
 import Loading from './../components/Loading'
 import NoData from './../components/NoData'
-import { Pagination } from 'element-ui'
+import { Pagination, Button } from 'element-ui'
 
 export default {
   name: 'OrderList',
@@ -94,7 +106,8 @@ export default {
     OrderHeader,
     Loading,
     NoData,
-    [Pagination.name]: Pagination
+    [Pagination.name]: Pagination,
+    [Button.name]: Button
   },
   data() {
     return {
@@ -115,7 +128,7 @@ export default {
           pageNum: this.pageNum
         }
       }).then((res) => {
-        this.list = res.list
+        this.list = this.list.concat(res.list)
         this.loading = false
         this.total = res.total
       }).catch(() => {
@@ -140,6 +153,10 @@ export default {
     },
     handleChange(pageNum) {
       this.pageNum = pageNum
+      this.getOrderList()
+    },
+    loadMore() {
+      this.pageNum++
       this.getOrderList()
     }
   }
@@ -212,7 +229,13 @@ export default {
           }
           .el-pagination .is-background .el-pager li:not(.disabled) .active {
             background-color: #FF6600;
-            color: #FFF;
+          }
+          .el-button--primary {
+            background-color: #FF6600;
+            border-color: #FF6600;
+          }
+          .load-more {
+            text-align: center;
           }
         }
       }
