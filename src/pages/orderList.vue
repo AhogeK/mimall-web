@@ -67,7 +67,7 @@
               </div>
             </div>
           </div>
-          <el-pagination
+          <!-- <el-pagination
             v-if="false"
             class="pagination"
             background
@@ -75,9 +75,9 @@
             :page-size="pageSize"
             :total="total" 
             @current-change="handleChange"
-          />
-          <div
-            v-if="!loading && list.length > 0"
+          /> -->
+          <!-- <div
+            v-if="showNextPage"
             class="load-more"
           >
             <el-button
@@ -87,6 +87,18 @@
             >
               加载更多
             </el-button>
+          </div> -->
+          <div
+            v-infinite-scroll="scrollMore"
+            class="scroll-more"
+            infinite-scroll-disabled="busy"
+            infinite-scroll-distance="410"
+          >
+            <img
+              v-if="!busy && !loading"
+              src="/imgs/loading-svg/loading-spinning-bubbles.svg"
+              alt="loading"
+            >
           </div>
           <NoData v-if="!loading && list.length==0" />
         </div>
@@ -99,6 +111,7 @@ import OrderHeader from './../components/OrderHeader'
 import Loading from './../components/Loading'
 import NoData from './../components/NoData'
 import { Pagination, Button } from 'element-ui'
+import InfiniteScroll from 'vue-infinite-scroll'
 
 export default {
   name: 'OrderList',
@@ -109,13 +122,20 @@ export default {
     [Pagination.name]: Pagination,
     [Button.name]: Button
   },
+  directives: {
+    InfiniteScroll
+  },
   data() {
     return {
       list: [],
-      loading: true,
+      loading: false,
       pageSize: 10,
       pageNum: 1,
-      total: 0
+      total: 0,
+      // 加载更多：是否显示按钮
+      showNextPage: false, 
+      // 滚动加载，是否触发
+      busy: false
     }
   },
   mounted() {
@@ -123,6 +143,7 @@ export default {
   },
   methods: {
     getOrderList() {
+      this.loading = true
       this.axios.get('/orders', {
         params: {
           pageNum: this.pageNum
@@ -131,6 +152,8 @@ export default {
         this.list = this.list.concat(res.list)
         this.loading = false
         this.total = res.total
+        // this.showNextPage = res.hasNextPage
+        this.busy = false
       }).catch(() => {
         this.loading = false
       })
@@ -151,13 +174,39 @@ export default {
         }
       })
     },
-    handleChange(pageNum) {
-      this.pageNum = pageNum
-      this.getOrderList()
+    // 分页器
+    // handleChange(pageNum) {
+    //   this.pageNum = pageNum
+    //   this.getOrderList()
+    // },
+    // 加载更多按钮
+    // loadMore() {
+    //   this.pageNum++
+    //   this.getOrderList()
+    // },
+    // 滚动加载 插件实现
+    scrollMore() {
+      this.busy = true
+      setTimeout(() => {
+        this.pageNum++
+        this.getList()
+      }, 500)
     },
-    loadMore() {
-      this.pageNum++
-      this.getOrderList()
+    // 专门给scrollMore使用
+    getList() {
+      this.axios.get('/orders', {
+        params: {
+          pageSize: 10,
+          pageNum: this.pageNum
+        }
+      }).then((res) => {
+        this.list = this.list.concat(res.list)
+        if (res.hasNextPage) {
+          this.busy = false
+        } else {
+          this.busy = true
+        }
+      })
     }
   }
 }
@@ -234,7 +283,7 @@ export default {
             background-color: #FF6600;
             border-color: #FF6600;
           }
-          .load-more {
+          .load-more, .scroll-more {
             text-align: center;
           }
         }
