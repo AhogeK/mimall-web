@@ -67,6 +67,15 @@
               </div>
             </div>
           </div>
+          <el-pagination
+            v-if="!loading && list.length > 0"
+            class="pagination"
+            background
+            layout="prev, pager, next"
+            :page-size="pageSize"
+            :total="total" 
+            @current-change="handleChange"
+          />
           <NoData v-if="!loading && list.length==0" />
         </div>
       </div>
@@ -77,18 +86,23 @@
 import OrderHeader from './../components/OrderHeader'
 import Loading from './../components/Loading'
 import NoData from './../components/NoData'
+import { Pagination } from 'element-ui'
 
 export default {
   name: 'OrderList',
   components: {
     OrderHeader,
     Loading,
-    NoData
+    NoData,
+    [Pagination.name]: Pagination
   },
   data() {
     return {
       list: [],
-      loading: true
+      loading: true,
+      pageSize: 10,
+      pageNum: 1,
+      total: 0
     }
   },
   mounted() {
@@ -96,10 +110,14 @@ export default {
   },
   methods: {
     getOrderList() {
-      this.axios.get('/orders').then((res) => {
-        console.log(res.list)
+      this.axios.get('/orders', {
+        params: {
+          pageNum: this.pageNum
+        }
+      }).then((res) => {
         this.list = res.list
         this.loading = false
+        this.total = res.total
       }).catch(() => {
         this.loading = false
       })
@@ -119,6 +137,10 @@ export default {
           orderNo
         }
       })
+    },
+    handleChange(pageNum) {
+      this.pageNum = pageNum
+      this.getOrderList()
     }
   }
 }
@@ -184,6 +206,13 @@ export default {
                 color: $colorA;
               }
             }
+          }
+          .pagination {
+            text-align: right;
+          }
+          .el-pagination .is-background .el-pager li:not(.disabled) .active {
+            background-color: #FF6600;
+            color: #FFF;
           }
         }
       }
