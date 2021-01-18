@@ -2,7 +2,7 @@
   <div class="order-pay">
     <OrderHeader title="订单支付">
       <template v-slot:tip>
-        <span>请谨防钓鱼链接或诈骗电话，了解更多</span>
+        <span>请谨防钓鱼链接或诈骗电话，了解更多></span>
       </template>
     </OrderHeader>
     <div class="wrapper">
@@ -18,7 +18,8 @@
             <div class="order-total">
               <p>应付总额：<span>{{ payment }}</span>元</p>
               <p>
-                订单详细<em
+                订单详细
+                <em
                   class="icon-down"
                   :class="{'up':showDetail}"
                   @click="showDetail=!showDetail"

@@ -27,7 +27,7 @@
           </a>
           <a
             v-if="username"
-            href="javascript:;"
+            href="/#/order/list"
           >我的订单</a>
           <!-- <a href="javascript:;">注册</a> -->
           <a 
