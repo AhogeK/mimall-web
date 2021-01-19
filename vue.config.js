@@ -17,5 +17,8 @@ module.exports = {
     }
   },
   lintOnSave: true,
-  productionSourceMap: false
+	productionSourceMap: true,
+	chainWebpack: (config) => {
+		config.plugins.delete('prefetch')
+	}
 }
