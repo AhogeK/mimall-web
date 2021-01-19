@@ -67,15 +67,15 @@
               </div>
             </div>
           </div>
-          <!-- <el-pagination
-            v-if="false"
+          <el-pagination
+            v-if="!loading"
             class="pagination"
             background
             layout="prev, pager, next"
             :page-size="pageSize"
             :total="total" 
             @current-change="handleChange"
-          /> -->
+          />
           <!-- <div
             v-if="showNextPage"
             class="load-more"
@@ -88,7 +88,7 @@
               加载更多
             </el-button>
           </div> -->
-          <div
+          <!-- <div
             v-infinite-scroll="scrollMore"
             class="scroll-more"
             infinite-scroll-disabled="busy"
@@ -99,7 +99,7 @@
               src="/imgs/loading-svg/loading-spinning-bubbles.svg"
               alt="loading"
             >
-          </div>
+          </div> -->
           <NoData v-if="!loading && list.length==0" />
         </div>
       </div>
@@ -128,7 +128,7 @@ export default {
   data() {
     return {
       list: [],
-      loading: false,
+      loading: true,
       pageSize: 10,
       pageNum: 1,
       total: 0,
@@ -153,7 +153,7 @@ export default {
         this.loading = false
         this.total = res.total
         // this.showNextPage = res.hasNextPage
-        this.busy = false
+        // this.busy = false
       }).catch(() => {
         this.loading = false
       })
@@ -175,39 +175,39 @@ export default {
       })
     },
     // 分页器
-    // handleChange(pageNum) {
-    //   this.pageNum = pageNum
-    //   this.getOrderList()
-    // },
+    handleChange(pageNum) {
+      this.pageNum = pageNum
+      this.getOrderList()
+    },
     // 加载更多按钮
     // loadMore() {
     //   this.pageNum++
     //   this.getOrderList()
     // },
     // 滚动加载 插件实现
-    scrollMore() {
-      this.busy = true
-      setTimeout(() => {
-        this.pageNum++
-        this.getList()
-      }, 500)
-    },
+    // scrollMore() {
+    //   this.busy = true
+    //   setTimeout(() => {
+    //     this.pageNum++
+    //     this.getList()
+    //   }, 500)
+    // },
     // 专门给scrollMore使用
-    getList() {
-      this.axios.get('/orders', {
-        params: {
-          pageSize: 10,
-          pageNum: this.pageNum
-        }
-      }).then((res) => {
-        this.list = this.list.concat(res.list)
-        if (res.hasNextPage) {
-          this.busy = false
-        } else {
-          this.busy = true
-        }
-      })
-    }
+    // getList() {
+    //   this.axios.get('/orders', {
+    //     params: {
+    //       pageSize: 10,
+    //       pageNum: this.pageNum
+    //     }
+    //   }).then((res) => {
+    //     this.list = this.list.concat(res.list)
+    //     if (res.hasNextPage) {
+    //       this.busy = false
+    //     } else {
+    //       this.busy = true
+    //     }
+    //   })
+    // }
   }
 }
 </script>

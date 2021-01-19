@@ -16,5 +16,6 @@ module.exports = {
 			errors: true
 		}
 	},
-	lintOnSave: true
+	lintOnSave: true,
+	productionSourceMap: false
 }
