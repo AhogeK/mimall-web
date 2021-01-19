@@ -5,12 +5,12 @@ import Home from './pages/home'
 import Index from './pages/index'
 // import Product from './pages/product'
 // import Detail from './pages/detail'
-import Cart from './pages/cart'
+// import Cart from './pages/cart'
 import Order from './pages/order'
-import OrderConfirm from './pages/orderConfirm'
-import OrderList from './pages/orderList'
-import OrderPay from './pages/orderPay'
-import AliPay from './pages/alipay'
+// import OrderConfirm from './pages/orderConfirm'
+// import OrderList from './pages/orderList'
+// import OrderPay from './pages/orderPay'
+// import AliPay from './pages/alipay'
 
 Vue.use(Router);
 
@@ -28,7 +28,7 @@ export default new Router({
         {
           path: '/product/:id',
           name: 'product',
-          component: resolve => require(['./pages/index.vue'], resolve)
+          component: resolve => require(['./pages/product.vue'], resolve)
         },
         {
           path: '/detail/:id',
@@ -45,7 +45,7 @@ export default new Router({
     {
       path: '/cart',
       name: 'cart',
-      component: Cart,
+      component: () => import('./pages/cart.vue')
     },
     {
       path: '/order',
@@ -54,22 +54,22 @@ export default new Router({
       children: [{
           path: 'list',
           name: 'order-list',
-          component: OrderList,
+          component: () => import('./pages/orderList.vue'),
         },
         {
           path: 'confirm',
           name: 'order-confirm',
-          component: OrderConfirm
+          component: () => import('./pages/orderConfirm.vue')
         },
         {
           path: 'pay',
           order: 'order-pay',
-          component: OrderPay
+          component: () => import('./pages/orderPay.vue')
         },
         {
           path: 'alipay',
           order: 'alipay',
-          component: AliPay
+          component: () => import('./pages/alipay.vue')
         }
       ]
     }
