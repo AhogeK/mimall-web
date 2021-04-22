@@ -20,5 +20,6 @@ module.exports = {
 	productionSourceMap: true,
 	chainWebpack: (config) => {
 		config.plugins.delete('prefetch')
-	}
+	},
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
 }

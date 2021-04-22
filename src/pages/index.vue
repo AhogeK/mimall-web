@@ -218,12 +218,12 @@
             },
             {
               id: 32,
-              img: 'imgs/item-box-3.jpg',
+              img: '/imgs/item-box-3.jpg',
               name: 'Redmi K20 Pro'
             },
             {
               id: 33,
-              img: 'imgs/item-box-4.jpg',
+              img: '/imgs/item-box-4.jpg',
               name: '移动4G专区'
             }
           ],
@@ -240,12 +240,12 @@
             },
             {
               id: 32,
-              img: 'imgs/item-box-3.jpg',
+              img: '/imgs/item-box-3.jpg',
               name: 'Redmi K20 Pro'
             },
             {
               id: 33,
-              img: 'imgs/item-box-4.jpg',
+              img: '/imgs/item-box-4.jpg',
               name: '移动4G专区'
             }
           ],
@@ -262,12 +262,12 @@
             },
             {
               id: 32,
-              img: 'imgs/item-box-3.jpg',
+              img: '/imgs/item-box-3.jpg',
               name: 'Redmi K20 Pro'
             },
             {
               id: 33,
-              img: 'imgs/item-box-4.jpg',
+              img: '/imgs/item-box-4.jpg',
               name: '移动4G专区'
             }
           ],
@@ -284,12 +284,12 @@
             },
             {
               id: 32,
-              img: 'imgs/item-box-3.jpg',
+              img: '/imgs/item-box-3.jpg',
               name: 'Redmi K20 Pro'
             },
             {
               id: 33,
-              img: 'imgs/item-box-4.jpg',
+              img: '/imgs/item-box-4.jpg',
               name: '移动4G专区'
             }
           ],
@@ -306,12 +306,12 @@
             },
             {
               id: 32,
-              img: 'imgs/item-box-3.jpg',
+              img: '/imgs/item-box-3.jpg',
               name: 'Redmi K20 Pro'
             },
             {
               id: 33,
-              img: 'imgs/item-box-4.jpg',
+              img: '/imgs/item-box-4.jpg',
               name: '移动4G专区'
             }
           ],
@@ -328,12 +328,12 @@
             },
             {
               id: 32,
-              img: 'imgs/item-box-3.jpg',
+              img: '/imgs/item-box-3.jpg',
               name: 'Redmi K20 Pro'
             },
             {
               id: 33,
-              img: 'imgs/item-box-4.jpg',
+              img: '/imgs/item-box-4.jpg',
               name: '移动4G专区'
             }
           ]

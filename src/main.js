@@ -35,7 +35,7 @@ axios.interceptors.response.use(function (response) {
     // if (path != '#/index') {
     //   window.location.href = '/#/login'
     // }
-    window.location.href = '/#/login'
+    window.location.href = (process.env.NODE_ENV === 'production' ? '/mimall' : '') + '/#/login'
     return Promise.reject(res)
   } else {
     Message.warning(res.msg)
